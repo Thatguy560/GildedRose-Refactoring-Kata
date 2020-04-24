@@ -2,7 +2,6 @@ require 'gilded_rose'
 require 'items'
 
 describe GildedRose do
-
   # Item.new("food name", "sell_in value", "quality")
   describe "#update_quality" do
     
@@ -15,29 +14,47 @@ describe GildedRose do
 
   it "changes the Sell-in value by 1" do 
     items = [Item.new("Peter's Orange Juice", 10, 20)] 
-    p "----"
-    p items[0]
-    p "----"
     expect { GildedRose.new(items).update_quality() }.to change { items[0].sell_in }.by(-1)
-    p "----"
-    p items[0]
-    p "----"
   end
 
- 
+  it "changes the quality by 1" do 
+    items = [Item.new("Peter's Orange Juice", 10, 20)] 
+    expect { GildedRose.new(items).update_quality() }.to change { items[0].quality }.by(-1)
+  end
 
+  it "checks that if the sell by date has passed, quality degrades twice as fast" do
+    items = [Item.new("Peter's Orange Juice", 0, 20)] 
+    GildedRose.new(items).update_quality()
+    expect(items[0].quality).to eq(18)
+  end
+
+  it "Proves 'Sulfuras', never have to be sold or decrease in Quality" do 
+    items = [Item.new("Sulfuras, Hand of Ragnaros", 10, 10)] 
+    GildedRose.new(items).update_quality()
+    expect(items[0].quality).to eq(10)
+    expect(items[0].sell_in).to eq(10)
+  end
+
+  # it "Proves that 'Aged Brie' increases in Quality the older it gets" do
+    
+
+  # it "demonstrates that the quality of an item is never negative" do 
+  #   items = [Item.new("Peter's Orange Juice", -1, -2)] 
+  #   GildedRose.new(items).update_quality()
+  #   expect(items[0].quality).not_to eq(-2)
+  # end
 end
 
+
 # # All items have a SellIn value which denotes the number 
-# of days we have to sell the item. All items have a Quality value
+# of days we have to sell the item. 
+
+# All items have a Quality value
 # which denotes how valuable the item is. 
 
-# Once the sell by date has passed, Quality degrades twice as fast
+
 # The Quality of an item is never negative
-# “Aged Brie” actually increases in Quality the older it gets
 # The Quality of an item is never more than 50
-# “Sulfuras”, being a legendary item, never has to be sold 
-# or decreases in Quality
 # “Backstage passes”, like aged brie, increases in Quality as it’s 
 # SellIn value approaches; Quality increases by 2 when there are 10 days
 #  or less 

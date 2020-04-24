@@ -1,3 +1,4 @@
+require_relative 'items'
 class GildedRose
 
   def initialize(items)
