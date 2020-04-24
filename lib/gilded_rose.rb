@@ -30,6 +30,7 @@ class GildedRose
         end
       end
       if item.name != "Sulfuras, Hand of Ragnaros"
+        # Sell in changes by 1 
         item.sell_in = item.sell_in - 1
       end
       if item.sell_in < 0
@@ -53,16 +54,4 @@ class GildedRose
   end
 end
 
-class Item
-  attr_accessor :name, :sell_in, :quality
 
-  def initialize(name, sell_in, quality)
-    @name = name
-    @sell_in = sell_in
-    @quality = quality
-  end
-
-  def to_s()
-    "#{@name}, #{@sell_in}, #{@quality}"
-  end
-end
