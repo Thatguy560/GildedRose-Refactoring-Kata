@@ -31,36 +31,40 @@ describe GildedRose do
   it "Proves 'Sulfuras', never have to be sold or decrease in Quality" do 
     items = [Item.new("Sulfuras, Hand of Ragnaros", 10, 10)] 
     GildedRose.new(items).update_quality()
-    expect(items[0].quality).to eq(10)
     expect(items[0].sell_in).to eq(10)
+    expect(items[0].quality).to eq(10)
   end
 
-  # it "Proves that 'Aged Brie' increases in Quality the older it gets" do
-    
+  it "Proves that 'Aged Brie' increases in Quality the older it gets" do
+    items = [Item.new("Aged Brie", 10, 10)] 
+    expect { GildedRose.new(items).update_quality() }.to change { items[0].quality }.by(1)
+  end 
+  
+  it "Shows that the quality of an item can never be negative" do 
+    items = [Item.new("Peter's Orange Juice", 10, 1)] 
+    5.times do 
+      GildedRose.new(items).update_quality()
+    end
+    expect(items[0].sell_in).to eq(5)
+    expect(items[0].quality).to be >= 0
+    p items[0].sell_in
+    p items[0].quality
+  end
 
-  # it "demonstrates that the quality of an item is never negative" do 
-  #   items = [Item.new("Peter's Orange Juice", -1, -2)] 
-  #   GildedRose.new(items).update_quality()
-  #   expect(items[0].quality).not_to eq(-2)
-  # end
+  it "Shows that the quality of an item is never more than 50" do 
+    items = [Item.new("Peter's Orange Juice", 10, 1)] 
+
+
 end
 
 
-# # All items have a SellIn value which denotes the number 
-# of days we have to sell the item. 
+# All items have a SellIn value which denotes the number of days we have to sell the item. 
+# All items have a Quality value which denotes how valuable the item is. 
 
-# All items have a Quality value
-# which denotes how valuable the item is. 
-
-
-# The Quality of an item is never negative
 # The Quality of an item is never more than 50
+
 # “Backstage passes”, like aged brie, increases in Quality as it’s 
 # SellIn value approaches; Quality increases by 2 when there are 10 days
 #  or less 
 # And by 3 when there are 5 days or less 
 # But Quality drops to 0 after the concert
-
-
-
-# require File.join(File.dirname(__FILE__), 'gilded_rose')
