@@ -97,11 +97,11 @@ def special_items(item)
 end
 
 def quality_within_normal_range(quality)
-  item.quality > MINIMUM_QUALITY_LIMIT && item.quality < MAXIMUM_QUALITY_LIMIT
+  item.quality >= MINIMUM_QUALITY_LIMIT && item.quality <= MAXIMUM_QUALITY_LIMIT
 end
 
 def passed_sell_in_date
-  item.sell_in < MINIMUM_QUALITY_LIMIT
+  item.sell_in <= MINIMUM_QUALITY_LIMIT
 end
 
 def change_sell_in(item, value)
