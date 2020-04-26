@@ -35,6 +35,8 @@ describe GildedRose do
         it "Shows that 'Aged Brie' increases in Quality by 1 the older it gets" do
           items = [Item.new("Aged Brie", 10, 10)] 
           GildedRose.new(items).update_quality()
+          p items[0].sell_in
+          p items[0].quality
           expect(items[0].sell_in).to eq(9)
           expect(items[0].quality).to eq(11)
         end
@@ -50,10 +52,10 @@ describe GildedRose do
         
         context "For the item 'Sulfuras, Hand of Ragnaros'." do  
           it "Proves 'Sulfuras', never have to be sold or decrease in Quality" do 
-            items = [Item.new("Sulfuras, Hand of Ragnaros", 10, 10)] 
+            items = [Item.new("Sulfuras, Hand of Ragnaros", 80, 80)] 
             GildedRose.new(items).update_quality()
-            expect(items[0].sell_in).to eq(10)
-            expect(items[0].quality).to eq(10)
+            expect(items[0].sell_in).to eq(80)
+            expect(items[0].quality).to eq(80)
           end
           
           context "For 'Backstage passes to a TAFKAL80ETC concert'." do  
