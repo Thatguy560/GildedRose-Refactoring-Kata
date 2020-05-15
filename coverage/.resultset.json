@@ -269,9 +269,9 @@
           1,
           null,
           1,
-          13,
-          13,
-          13,
+          14,
+          14,
+          14,
           null,
           null,
           1,
@@ -299,10 +299,21 @@
       },
       "/Users/student/Projects/Week10/GildedRose-Refactoring-Kata/spec/items_spec.rb": {
         "lines": [
-
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
         ]
       }
     },
-    "timestamp": 1589553327
+    "timestamp": 1589554425
   }
 }
