@@ -6,15 +6,12 @@ describe GildedRose do
   describe "#update_quality" do
 
     context "For normal items that aren't special." do
-      it "changes the Sell-in value by 1" do
+      it "When still in sell_in date,changes the Sell-in value and quality by 1" do
                                       # (Sell_in, Quality)
         items = [Item.new("Peter's Orange Juice", 10, 20)]
-        expect { GildedRose.new(items).update_quality() }.to change { items[0].sell_in }.by(-1)
-      end
-
-      it "changes the quality by 1" do
-        items = [Item.new("Peter's Orange Juice", 10, 20)]
-        expect { GildedRose.new(items).update_quality() }.to change { items[0].quality }.by(-1)
+        GildedRose.new(items).update_quality()
+        expect(items[0].sell_in).to eq(9)
+        expect(items[0].quality).to eq(19)
       end
 
       it "checks that if the sell by date has passed, quality degrades twice as fast" do
@@ -26,10 +23,10 @@ describe GildedRose do
 
       it "Shows that the quality of an item can never be negative" do
         items = [Item.new("Peter's Orange Juice", 10, 1)]
-        2.times do GildedRose.new(items).update_quality()
+        5.times do GildedRose.new(items).update_quality()
         end
-        expect(items[0].sell_in).to eq(8)
-        expect(items[0].quality).to be >= 0
+        expect(items[0].sell_in).to eq(5)
+        expect(items[0].quality).not_to eq(-4)
       end
 
       context "For the item 'Aged Brie'." do
@@ -53,7 +50,7 @@ describe GildedRose do
             GildedRose.new(items).update_quality()
           end
           expect(items[0].sell_in).to eq(9)
-          expect(items[0].quality).to be <= 50
+          expect(items[0].quality).not_to eq(51)
         end
 
         # context "For the item 'Sulfuras, Hand of Ragnaros'." do
