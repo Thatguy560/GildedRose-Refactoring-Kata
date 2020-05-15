@@ -4,9 +4,7 @@
 
 Taken from https://github.com/makersacademy/course/blob/master/individual_challenges/gilded_rose.md
 
-======================================
 Gilded Rose Requirements Specification
-======================================
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
 prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods.
@@ -42,3 +40,16 @@ for you).
 
 Just for clarification, an item can never have its Quality increase above 50, however "Sulfuras" is a
 legendary item and as such its Quality is 80 and it never alters.
+
+# Using the program and running in irb
+
+
+# Process
+
+# Testing Frameworks Used
+
+  ## Rubocop, Simplecov, rspec
+
+  ## Test Coverage:
+
+  # Example usage
