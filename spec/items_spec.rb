@@ -1,5 +1,4 @@
 require 'items'
-require 'gilded_rose'
 
 describe Item do  
   
