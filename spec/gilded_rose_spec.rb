@@ -8,21 +8,21 @@ describe GildedRose do
     context "For normal items that aren't special." do
       it "When still in sell_in date,changes the Sell-in value and quality by 1" do
                                       # (Sell_in, Quality)
-        items = [Item.new("Peter's Orange Juice", 10, 20)]
+        items = [Item.new("Normal Item", 10, 20)]
         GildedRose.new(items).update_quality()
         expect(items[0].sell_in).to eq(9)
         expect(items[0].quality).to eq(19)
       end
 
       it "checks that if the sell by date has passed, quality degrades twice as fast" do
-        items = [Item.new("Peter's Orange Juice", 0, 20)]
+        items = [Item.new("Normal Item", 0, 20)]
         GildedRose.new(items).update_quality()
         expect(items[0].sell_in).to eq(-1)
         expect(items[0].quality).to eq(18)
       end
 
       it "Shows that the quality of an item can never be negative" do
-        items = [Item.new("Peter's Orange Juice", 10, 1)]
+        items = [Item.new("Normal Item", 10, 1)]
         5.times do GildedRose.new(items).update_quality()
         end
         expect(items[0].sell_in).to eq(5)

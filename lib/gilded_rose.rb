@@ -20,15 +20,7 @@ class GildedRose
       
       # For Aged_Brie
       if aged_brie(item)
-        p "------"
-        p item.sell_in
-        p item.quality
-        p "------"
-        item.sell_in > 0 ? item.quality -= 1 : item.quality += 2 unless item.quality >= MAXIMUM_LIMIT
-        p "------"
-        p item.sell_in
-        p item.quality
-        p "------"
+        item.sell_in > 0 ? item.quality += 1 : item.quality += 2 unless item.quality >= MAXIMUM_LIMIT
       end
       
       item.sell_in -= 1
@@ -38,7 +30,7 @@ class GildedRose
 end
        
 def normal_item(item)
-  item.name != special_items(item)
+  item.name != "Aged Brie" && "Sulfuras, Hand of Ragnaros" && "Backstage passes to a TAFKAL80ETC concert" && "Conjured Mana Cake"
 end
 
 def aged_brie(item)
