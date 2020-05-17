@@ -1,7 +1,7 @@
 require_relative 'items'
 class GildedRose
 
-  HIGHEST_QUALITY = 50
+  MAX_QUALITY = 50
   ZERO_QUALITY = 0
   SECOND_LAST_TICKET_BATCH = 10
   LAST_TICKET_BATCH = 5
@@ -18,7 +18,7 @@ class GildedRose
       end
       
       if aged_brie(item)
-        item.sell_in > 0 ? item.quality += 1 : item.quality += 2 unless item.quality >= HIGHEST_QUALITY
+        item.sell_in > 0 ? item.quality += 1 : item.quality += 2 unless item.quality >= MAX_QUALITY
       end
 
       if sulfuras(item)
