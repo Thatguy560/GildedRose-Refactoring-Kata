@@ -21,7 +21,7 @@ describe GildedRose do
         expect(items[0].quality).to eq(18)
       end
 
-      it "Shows that the quality of an item can never be negative" do
+      it "Shows that the Quality of an item is never negative" do
         items = [Item.new("Normal Item", 10, 1)]
         5.times do GildedRose.new(items).update_quality()
         end
@@ -91,12 +91,12 @@ describe GildedRose do
                 expect(items[0].quality).to eq(8)
               end
 
-        #       it "Quality degrades twice as fast as normal items when not in sell by date" do
-        #         items = [Item.new("Conjured Mana Cake", 0, 10)]
-        #         GildedRose.new(items).update_quality()
-        #         expect(items[0].sell_in).to eq(-1)
-        #         expect(items[0].quality).to eq(6)
-        #       end
+              it "Quality degrades twice as fast as normal items when not in sell by date" do
+                items = [Item.new("Conjured Mana Cake", 0, 10)]
+                GildedRose.new(items).update_quality()
+                expect(items[0].sell_in).to eq(-1)
+                expect(items[0].quality).to eq(6)
+              end
             end
           end
         end
