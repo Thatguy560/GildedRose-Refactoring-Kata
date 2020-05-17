@@ -1,8 +1,8 @@
 require_relative 'items'
 class GildedRose
 
-  MAXIMUM_LIMIT = 50
-  MINIMUM_LIMIT = 0
+  HIGHEST_QUALITY = 50
+  ZERO_QUALITY = 0
   SECOND_LAST_TICKET_BATCH = 10
   LAST_TICKET_BATCH = 5
 
@@ -13,16 +13,24 @@ class GildedRose
   def update_quality()
     @items.each do |item|
 
-      # For Normal Items
       if normal_item(item) 
-        item.sell_in > 0 ? item.quality -= 1 : item.quality -= 2 unless item.quality == MINIMUM_LIMIT
+        item.sell_in > 0 ? item.quality -= 1 : item.quality -= 2 unless item.quality == ZERO_QUALITY
       end
       
-      # For Aged_Brie
       if aged_brie(item)
-        item.sell_in > 0 ? item.quality += 1 : item.quality += 2 unless item.quality >= MAXIMUM_LIMIT
+        item.sell_in > 0 ? item.quality += 1 : item.quality += 2 unless item.quality >= HIGHEST_QUALITY
       end
-      
+
+      if sulfuras(item)
+        item.quality = 80
+        item.sell_in += 1 
+      end
+
+      if backstage_passes(item)
+        item.sell_in >= SECOND_LAST_TICKET_BATCH ? item.quality += 2 : item.sell_in >= LAST_TICKET_BATCH ? 
+        item.quality += 3 : item.quality = ZERO_QUALITY
+      end
+
       item.sell_in -= 1
     
     end
@@ -30,7 +38,10 @@ class GildedRose
 end
        
 def normal_item(item)
-  item.name != "Aged Brie" && "Sulfuras, Hand of Ragnaros" && "Backstage passes to a TAFKAL80ETC concert" && "Conjured Mana Cake"
+  # !special_items(item)
+  item.name != "Aged Brie" && 
+  item.name != "Backstage passes to a TAFKAL80ETC concert" &&
+  item.name != "Sulfuras, Hand of Ragnaros"
 end
 
 def aged_brie(item)
@@ -50,7 +61,7 @@ def conjured(item)
 end
 
 def special_items(item)
-  item.name == aged_brie(item) || sulfuras(item) || backstage_passes(item) || conjured(item)
+  item.name == "Aged Brie" && "Sulfuras, Hand of Ragnaros" && "Backstage passes to a TAFKAL80ETC concert" && "Conjured Mana Cake"
 end
 
 # ORIGINAL CODE, TO BE REFACTORED
