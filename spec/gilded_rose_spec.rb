@@ -25,7 +25,7 @@ describe GildedRose do
         5.times do GildedRose.new(items).update_quality()
         end
         expect(items[0].sell_in).to eq(5)
-        expect(items[0].quality).not_to eq(-4)
+        expect(items[0].quality).to be >= GildedRose::ZERO_QUALITY
       end
 
       context "For the item 'Aged Brie'." do
@@ -49,7 +49,7 @@ describe GildedRose do
             GildedRose.new(items).update_quality()
           end
           expect(items[0].sell_in).to eq(9)
-          expect(items[0].quality).not_to eq(51)
+          expect(items[0].quality).to be <= GildedRose::MAX_QUALITY
         end
 
         context "For the item 'Sulfuras, Hand of Ragnaros'." do
