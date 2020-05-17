@@ -9,10 +9,10 @@ class GildedRose
   def initialize(items)
     @items = items
   end
-
+  
   def update_quality()
     @items.each do |item|
-
+      
       if normal_item(item) 
         item.sell_in > 0 ? item.quality -= 1 : item.quality -= 2 unless item.quality == ZERO_QUALITY
       end
@@ -42,11 +42,7 @@ class GildedRose
 end
        
 def normal_item(item)
-  # !special_items(item)
-  item.name != "Aged Brie" && 
-  item.name != "Backstage passes to a TAFKAL80ETC concert" &&
-  item.name != "Sulfuras, Hand of Ragnaros" && 
-  item.name != "Conjured Mana Cake"
+  !(aged_brie(item) || sulfuras(item) || backstage_passes(item) || conjured(item))
 end
 
 def aged_brie(item)
@@ -63,10 +59,6 @@ end
 
 def conjured(item)
   item.name == "Conjured Mana Cake"
-end
-
-def special_items(item)
-  item.name == "Aged Brie" && "Sulfuras, Hand of Ragnaros" && "Backstage passes to a TAFKAL80ETC concert" && "Conjured Mana Cake"
 end
 
 # ORIGINAL CODE, TO BE REFACTORED
@@ -117,6 +109,7 @@ end
 #     end
 #   end
 # end
+
 # class Item
 # attr_accessor :name, :sell_in, :quality
 

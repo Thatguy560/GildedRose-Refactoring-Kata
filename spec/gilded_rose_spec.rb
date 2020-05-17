@@ -7,7 +7,6 @@ describe GildedRose do
 
     context "For normal items that aren't special." do
       it "When still in sell_in date,changes the Sell-in value and quality by 1" do
-                                      # (Sell_in, Quality)
         items = [Item.new("Normal Item", 10, 20)]
         GildedRose.new(items).update_quality()
         expect(items[0].sell_in).to eq(9)
@@ -80,7 +79,7 @@ describe GildedRose do
               items = [Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 20)]
               GildedRose.new(items).update_quality()
               expect(items[0].sell_in).to eq(-1)
-              expect(items[0].quality).to eq(0)
+              expect(items[0].quality).to eq GildedRose::ZERO_QUALITY
             end
 
             context "For the item 'Conjured Mana Cake'." do
