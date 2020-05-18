@@ -5,6 +5,7 @@ class GildedRose
   ZERO_QUALITY = 0
   SECOND_LAST_TICKET_BATCH = 10
   LAST_TICKET_BATCH = 5
+  LEGENDARY_QUALITY = 80 
 
   def initialize(items)
     @items = items
@@ -22,7 +23,7 @@ class GildedRose
       end
 
       if sulfuras(item)
-        item.quality = 80
+        item.quality = LEGENDARY_QUALITY
         item.sell_in += 1
       end
 

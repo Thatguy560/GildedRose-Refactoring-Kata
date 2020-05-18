@@ -1,4 +1,4 @@
-# Gilded Rose Refactoring Kata
+# Gilded Rose Refactoring Kata - Technical Test 
 
 **Requirements** 
 
@@ -41,23 +41,25 @@ for you).
 Just for clarification, an item can never have its Quality increase above 50, however "Sulfuras" is a
 legendary item and as such its Quality is 80 and it never alters.
 
-# Using the program and running in irb
+**Choose [legacy code](https://github.com/emilybache/GildedRose-Refactoring-Kata) (translated by Emily Bache) in the language of your choice. The aim is to practice good design in the language of your choice. Refactor the code in such a way that adding the new "conjured" functionality is easy.**
+
+# Installation
 
 $ git clone https://github.com/Thatguy560/GildedRose-Refactoring-Kata.git
 
 $ cd GildedRose-Refactoring-Kata
 
-# Process
+$ bundle
 
-- First step was to write out the tests for the gilded_rose_spec file, pass them and make sure all of the specifications were met. 
-- Once all my tests were passing and matched all the requirements, I had to refactor the following code provided. My procedure for this was to comment out all, but one test and pass each one by one. For writing code I broke down the nested if statements and used the ternary operator to make the code more readable. 
+# My Approach
+
+- The first step was to write out all the tests for the gilded_rose_spec file, make sure all of the specifications of the instructions were met and pass them. 
+- Once all my tests were passing and matched all the requirements, I had to refactor the following code provided. My procedure for this was to comment out all, but one test and pass each one by one. For writing code I broke down the nested if statements and used the ternary operator to make the code more readable. I extrated a lot of the most important numbers to Constants for (hopefully) better readability.
 
 # Testing Frameworks Used
 
-## Rubocop, Simplecov, rspec
+## Rubocop, Simplecov, RSpec
 
-## By running rspec in the terminal you'll get...
+# RSpec Tests
 
-## Test Coverage:  99.15% -- 117/118 lines in 4 files 
-
-# Example usage
+## Test Coverage:  99.16% -- 118/119 lines in 4 files 

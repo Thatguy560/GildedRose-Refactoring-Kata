@@ -54,10 +54,10 @@ describe GildedRose do
 
         context "For the item 'Sulfuras, Hand of Ragnaros'." do
           it "Proves 'Sulfuras', never have to be sold or decrease in Quality" do
-            items = [Item.new("Sulfuras, Hand of Ragnaros", 80, 80)]
+            items = [Item.new("Sulfuras, Hand of Ragnaros", 20, 20)]
             GildedRose.new(items).update_quality()
-            expect(items[0].sell_in).to eq(80)
-            expect(items[0].quality).to eq(80)
+            expect(items[0].sell_in).to eq(20)
+            expect(items[0].quality).to eq GildedRose::LEGENDARY_QUALITY
           end
 
           context "For 'Backstage passes to a TAFKAL80ETC concert'." do
