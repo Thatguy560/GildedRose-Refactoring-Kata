@@ -8,4 +8,9 @@ describe Item do
     expect(item.sell_in).to eq(20)
     expect(item.quality).to eq(20)
   end
+
+  it "prints out the name, sellin value and quality" do 
+    item1 = Item.new("Peter's Orange Juice", 15, 15) 
+    expect(item1.to_s).to eq "Peter's Orange Juice, 15, 15"
+  end
 end

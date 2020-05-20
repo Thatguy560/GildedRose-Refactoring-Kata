@@ -62,4 +62,4 @@ $ bundle
 
 # RSpec Tests
 
-## Test Coverage:  99.16% -- 118/119 lines in 4 files 
+## Test Coverage:  100.00% -- 122/122 lines in 4 files
