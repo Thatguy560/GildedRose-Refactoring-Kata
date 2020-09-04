@@ -54,7 +54,7 @@ $ bundle
 # My Approach
 
 - The first step was to write out all the tests for the gilded_rose_spec file, make sure all of the specifications of the instructions were met and pass them. 
-- Once all my tests were passing and matched all the requirements, I had to refactor the following code provided. My procedure for this was to comment out all, but one test and pass each one by one. For writing code I broke down the nested if statements and used the ternary operator to make the code more readable. I extrated a lot of the most important numbers to Constants for (hopefully) better readability.
+- Once all my tests were passing and matched all the requirements, I had to refactor the following code provided. My procedure for this was to comment out all, but one test and pass each one by one. For writing code I broke down the nested if statements and used the ternary operator to make the code more readable. I extracted a lot of the most important numbers to Constants for (hopefully) better readability.
 
 # Testing Frameworks Used
 
